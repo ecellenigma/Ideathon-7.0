@@ -1,0 +1,42 @@
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 8ch; }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 9ch; } 
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  10% { border-color: #ffffff; }
+}
+
+.typewriter {
+  overflow: hidden;
+  font-family: "Delivery";
+  border-right: .15em solid #04629A;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15em;
+  animation: 
+    typing 3.5s steps(21, end),
+    blink-caret .75s step-end infinite;
+}
+
+.typewriter1{
+  overflow: hidden;
+  font-family: "Delivery";
+  border-right: .01em solid #d9d9d9;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15em;
+  animation: 
+    typing 3.5s steps(21, end),
+    blink-caret .75s step-end infinite;
+}
+
+video {
+  background-color: transparent;
+}
