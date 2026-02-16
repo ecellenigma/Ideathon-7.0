@@ -1,22 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Orbitron:wght@400..900&display=swap');
 @plugin 'tailwindcss-animate';
 
 @custom-variant dark (&:is(.dark *));
 @import "tailwindcss";
 
-/* filepath: c:\Users\DELL\Documents\Ideathon\Ideathon-6.0\src\index.css */
-
 :root {
   /* Colors */
-  --bg-color: #030B15; /* Dark Blue */
-  --header-cyna: #00E0FF; /* Bright Cyan */
-  --nav-hover: #00C4F4; /* Soft Cyan */
-  --bt-hover: #04629A; /* Slightly Darker Blue */
+  --bg-color: #050201;
+  /* Dark Blue - Keeping base */
+  --header-primary: #FF6A2E;
+  /* Ideathon 7.0 Orange */
+  --nav-hover: #FF8A06;
+  /* Lighter Orange */
+  --bt-hover: #C52A0E;
+  /* Darker Red-Orange */
+  --text-primary: #FDFDFD;
 
   /* Fonts */
   --para-all: 'Montserrat', sans-serif;
   --track-header: 'Outfit', sans-serif;
   --font-footer: 'Poppins', sans-serif;
+
+  /* Shadcn/Base Variables */
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -127,6 +132,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -139,15 +145,8 @@
   font-weight: normal;
   font-style: normal;
 }
-@font-face {
-  font-family: 'Tektur';
-  src: url('/src/assets/Fonts/Tektur-Bold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
 
 
 .font-tektur {
-  font-family: 'Tektur', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
-

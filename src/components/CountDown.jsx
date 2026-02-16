@@ -10,7 +10,7 @@ export default function IdeathonCountdown() {
 
     useEffect(() => {
         const calculateTimeLeft = () => {
-            const eventDate = new Date("2025-04-04T00:00:00"); // Set event date & time
+            const eventDate = new Date("2026-02-27T00:00:00"); // Set event date & time
             const now = new Date();
             const timeDiff = eventDate - now;
 
@@ -32,13 +32,13 @@ export default function IdeathonCountdown() {
     }, []);
 
     return (
-        <div className="relative bg-gradient-to-r mt-5 p-5 font-tektur text-white px-8 rounded-lg shadow-lg text-center">
-            <p className="md:text-lg sm:text-xl">
-                <span className="text-[#00C4F4] font-semibold text-3xl"> {timeLeft.days}</span> d : 
-                <span className="text-[#00C4F4] font-semibold text-3xl"> {timeLeft.hours}</span> h :
-                <span className="text-[#00C4F4] font-semibold text-3xl"> {timeLeft.minutes}</span> m : 
-                <span className="text-[#00C4F4] font-semibold text-3xl"> {timeLeft.seconds}</span> s 
-            </p>
+        <div className="relative mt-5 p-5 font-tektur text-white px-8 rounded-lg text-center">
+            <div className="flex flex-wrap justify-center gap-2 md:gap-4 md:text-lg sm:text-xl">
+                <span className="whitespace-nowrap"><span className="text-[#FF6A2E] font-semibold text-2xl md:text-3xl drop-shadow-[0_0_8px_rgba(255,106,46,0.8)]"> {timeLeft.days}</span> d :</span>
+                <span className="whitespace-nowrap"><span className="text-[#FF6A2E] font-semibold text-2xl md:text-3xl drop-shadow-[0_0_8px_rgba(255,106,46,0.8)]"> {timeLeft.hours}</span> h :</span>
+                <span className="whitespace-nowrap"><span className="text-[#FF6A2E] font-semibold text-2xl md:text-3xl drop-shadow-[0_0_8px_rgba(255,106,46,0.8)]"> {timeLeft.minutes}</span> m :</span>
+                <span className="whitespace-nowrap"><span className="text-[#FF6A2E] font-semibold text-2xl md:text-3xl drop-shadow-[0_0_8px_rgba(255,106,46,0.8)]"> {timeLeft.seconds}</span> s</span>
+            </div>
         </div>
     );
 }

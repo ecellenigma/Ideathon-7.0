@@ -17,7 +17,7 @@ const DottedParticles = () => {
     () => ({
       background: {
         color: {
-          value: "#030B15",
+          value: "#050201",
         },
       },
       fpsLimit: 120,
@@ -30,7 +30,7 @@ const DottedParticles = () => {
           },
         },
         color: {
-          value: "#00E0FF",
+          value: "#FF6A2E",
         },
         shape: {
           type: "circle",

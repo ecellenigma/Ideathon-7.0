@@ -14,8 +14,8 @@ import six from "../assets/text/6.0new.svg";
 export default function RedoAnimText() {
 
   const sequences = [
-    [I, D, E, A, T, H, O, N,six], 
-    
+    [I, D, E, A, T, H, O, N],
+
   ];
 
   const count = useMotionValue(0);
