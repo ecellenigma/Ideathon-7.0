@@ -43,7 +43,7 @@ const Landing = () => {
 
 
                 <h1 className="text-2xl font-tektur md:text-3xl font-bold">
-                    Innovators Ka Apna Battlefield
+                    Uncage The Underdog Idea
                 </h1>
 
 

@@ -34,7 +34,7 @@ const App = () => {
                         <Tracks />
                         <Prizes />
                         <WhatsInIt />
-                        <Sponsors />
+                        {/* <Sponsors /> */}
                         <FAQ />
                         <Contact />
                         <Footer />
@@ -42,8 +42,8 @@ const App = () => {
                 </div>
             )}
         </div>
-        
-        
+
+
     );
 };
 

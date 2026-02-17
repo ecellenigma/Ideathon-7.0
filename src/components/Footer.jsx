@@ -22,7 +22,7 @@ const Footer = () => {
               alt="Call img"
               className="h-8 w-8"
             />
-            <p>Aniketh: {LINKS.CONTACTS.ANIKETH}</p>
+            <p>Nandan: {LINKS.CONTACTS.NANDAN}</p>
           </div>
           <div className="flex items-center space-x-4 mt-2">
             <img
@@ -30,7 +30,7 @@ const Footer = () => {
               alt="Call img"
               className="h-8 w-8"
             />
-            <p>Jahnavi: {LINKS.CONTACTS.JAHNAVI}</p>
+            <p>Nischith: {LINKS.CONTACTS.NISCHITH}</p>
           </div>
           <div className="flex items-center space-x-4 mt-2">
             <img
