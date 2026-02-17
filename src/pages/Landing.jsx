@@ -42,9 +42,20 @@ const Landing = () => {
                 </div> */}
 
 
-                <h1 className="text-2xl font-tektur md:text-3xl font-bold">
+                <motion.h1
+                    className="text-3xl md:text-5xl font-tektur font-bold mt-6 tracking-wider text-white drop-shadow-lg"
+                    animate={{
+                        opacity: [1, 1, 0.6, 1, 0.6, 1, 1]
+                    }}
+                    transition={{
+                        duration: 4,
+                        times: [0, 0.9, 0.92, 0.94, 0.96, 0.98, 1],
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                >
                     Uncage The Underdog Idea
-                </h1>
+                </motion.h1>
 
 
                 <div className="flex flex-col md:flex-row gap-5 md:gap-8 items-center justify-center w-full px-4">
