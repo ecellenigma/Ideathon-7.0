@@ -10,7 +10,7 @@ export default function IdeathonCountdown() {
 
     useEffect(() => {
         const calculateTimeLeft = () => {
-            const eventDate = new Date("2026-02-27T00:00:00"); // Set event date & time
+            const eventDate = new Date("2026-02-28T00:00:00"); // Set event date & time
             const now = new Date();
             const timeDiff = eventDate - now;
 
