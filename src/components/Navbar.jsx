@@ -19,24 +19,53 @@ const Navbar = () => {
     useEffect(() => {
         const handleScrollSpy = () => {
             const sections = ["home", "about", "tracks", "faqs", "contact"];
-            const scrollPosition = window.scrollY + 100;
+            const scrollContainer = document.getElementById("scroll-container");
+
+            // Use container scroll values if available, otherwise fallback to window
+            const scrollPosition = scrollContainer ? scrollContainer.scrollTop : window.scrollY;
+            const windowHeight = scrollContainer ? scrollContainer.clientHeight : window.innerHeight;
+            const documentHeight = scrollContainer ? scrollContainer.scrollHeight : document.body.offsetHeight;
+
+            // Offset for navbar height/trigger point
+            const triggerPoint = scrollPosition + windowHeight / 3;
 
             // Check if we're at the bottom of the page
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+            if ((windowHeight + scrollPosition) >= documentHeight - 50) {
                 setActiveSection("contact");
                 return;
             }
 
             for (const section of sections) {
                 const element = document.getElementById(section);
-                if (element && element.offsetTop <= scrollPosition && (element.offsetTop + element.offsetHeight) > scrollPosition) {
-                    setActiveSection(section);
+                if (element) {
+                    // Calculate element position relative to the scroll container
+                    const elementTop = element.offsetTop;
+                    const elementBottom = elementTop + element.offsetHeight;
+
+                    if (triggerPoint >= elementTop && triggerPoint < elementBottom) {
+                        setActiveSection(section);
+                    }
                 }
             }
         };
 
-        window.addEventListener("scroll", handleScrollSpy);
-        return () => window.removeEventListener("scroll", handleScrollSpy);
+        const scrollContainer = document.getElementById("scroll-container");
+        if (scrollContainer) {
+            scrollContainer.addEventListener("scroll", handleScrollSpy);
+        } else {
+            window.addEventListener("scroll", handleScrollSpy);
+        }
+
+        // Initial check
+        handleScrollSpy();
+
+        return () => {
+            if (scrollContainer) {
+                scrollContainer.removeEventListener("scroll", handleScrollSpy);
+            } else {
+                window.removeEventListener("scroll", handleScrollSpy);
+            }
+        };
     }, []);
 
     return (

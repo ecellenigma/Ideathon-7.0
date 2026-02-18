@@ -20,7 +20,7 @@ const App = () => {
     };
 
     return (
-        <div className="md:snap-y md:snap-mandatory h-screen overflow-y-scroll">
+        <div id="scroll-container" className="md:snap-y md:snap-mandatory h-screen overflow-y-scroll">
             {!loadingComplete && <LoadingAnimation onLoadingComplete={handleLoadingComplete} />}
             {loadingComplete && (
                 <div className="relative">
