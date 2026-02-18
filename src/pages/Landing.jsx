@@ -42,15 +42,14 @@ const Landing = () => {
 
 
                 <motion.h1
-                    className="text-4xl md:text-6xl font-tektur font-bold mt-10 md:mt-12 tracking-wider text-white drop-shadow-[0_5px_15px_rgba(255,106,46,0.4)]"
+                    className="text-4xl md:text-6xl font-tektur font-bold mt-10 md:mt-12 tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-[#FF6A2E] to-white bg-[length:200%_auto] drop-shadow-[0_2px_10px_rgba(255,106,46,0.3)] pb-2"
                     animate={{
-                        opacity: [1, 1, 0.6, 1, 0.6, 1, 1]
+                        backgroundPosition: ["0% 50%", "200% 50%"]
                     }}
                     transition={{
-                        duration: 4,
-                        times: [0, 0.9, 0.92, 0.94, 0.96, 0.98, 1],
+                        duration: 5,
                         repeat: Infinity,
-                        ease: "easeInOut"
+                        ease: "linear"
                     }}
                 >
                     Uncage The Underdog Idea
