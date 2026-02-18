@@ -10,8 +10,8 @@ import QuestionMark from "../assets/question mark.svg";
 
 const FAQ = () => {
   return (
-    <section id="faqs" className="p-10 text-white snap-start">
-      <h1 className="mx-auto my-10 text-center text-5xl md:text-6xl font-[900] font-['Outfit'] uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#FF6A2E] to-[#FF9A03]">
+    <section id="faqs" className="text-white min-h-screen snap-start py-20 px-4">
+      <h1 className="mx-auto mt-10 mb-16 text-center text-5xl md:text-7xl font-[900] font-['Outfit'] uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#FF6A2E] to-[#FF9A03]">
         FAQs
       </h1>
 
@@ -37,7 +37,7 @@ const FAQ = () => {
                 <span className="font-semibold">{FAQ.QUESTION}</span>
               </div>
             </AccordionTrigger>
-            <AccordionContent className="px-4 py-3 pb-6 bg-[#0a0808]">
+            <AccordionContent className="px-4 py-3 pb-6 bg-[#050201]">
               <p className="text-sm text-gray-300">{FAQ.ANSWER}</p>
             </AccordionContent>
           </AccordionItem>

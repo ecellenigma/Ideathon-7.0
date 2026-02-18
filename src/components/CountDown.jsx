@@ -32,12 +32,38 @@ export default function IdeathonCountdown() {
     }, []);
 
     return (
-        <div className="relative mt-5 p-5 font-tektur text-white px-8 rounded-lg text-center">
-            <div className="flex flex-wrap justify-center gap-2 md:gap-4 md:text-lg sm:text-xl">
-                <span className="whitespace-nowrap"><span className="text-[#FF6A2E] font-semibold text-2xl md:text-3xl drop-shadow-[0_0_8px_rgba(255,106,46,0.8)]"> {timeLeft.days}</span> d :</span>
-                <span className="whitespace-nowrap"><span className="text-[#FF6A2E] font-semibold text-2xl md:text-3xl drop-shadow-[0_0_8px_rgba(255,106,46,0.8)]"> {timeLeft.hours}</span> h :</span>
-                <span className="whitespace-nowrap"><span className="text-[#FF6A2E] font-semibold text-2xl md:text-3xl drop-shadow-[0_0_8px_rgba(255,106,46,0.8)]"> {timeLeft.minutes}</span> m :</span>
-                <span className="whitespace-nowrap"><span className="text-[#FF6A2E] font-semibold text-2xl md:text-3xl drop-shadow-[0_0_8px_rgba(255,106,46,0.8)]"> {timeLeft.seconds}</span> s</span>
+        <div className="relative mt-5 p-5 font-tektur text-white px-8 rounded-lg text-center select-none">
+            <div className="flex flex-wrap justify-center items-baseline gap-3 md:gap-6">
+                <div className="flex flex-col items-center">
+                    <span className="text-[#FF6A2E] font-bold text-4xl md:text-6xl drop-shadow-[0_0_15px_rgba(255,106,46,0.6)]">
+                        {timeLeft.days}
+                    </span>
+                    <span className="text-sm md:text-lg text-gray-400 font-medium">days</span>
+                </div>
+                <span className="text-2xl md:text-4xl text-[#FF6A2E] animate-pulse">:</span>
+
+                <div className="flex flex-col items-center">
+                    <span className="text-[#FF6A2E] font-bold text-4xl md:text-6xl drop-shadow-[0_0_15px_rgba(255,106,46,0.6)]">
+                        {timeLeft.hours}
+                    </span>
+                    <span className="text-sm md:text-lg text-gray-400 font-medium">hours</span>
+                </div>
+                <span className="text-2xl md:text-4xl text-[#FF6A2E] animate-pulse">:</span>
+
+                <div className="flex flex-col items-center">
+                    <span className="text-[#FF6A2E] font-bold text-4xl md:text-6xl drop-shadow-[0_0_15px_rgba(255,106,46,0.6)]">
+                        {timeLeft.minutes}
+                    </span>
+                    <span className="text-sm md:text-lg text-gray-400 font-medium">mins</span>
+                </div>
+                <span className="text-2xl md:text-4xl text-[#FF6A2E] animate-pulse">:</span>
+
+                <div className="flex flex-col items-center">
+                    <span className="text-[#FF6A2E] font-bold text-4xl md:text-6xl drop-shadow-[0_0_15px_rgba(255,106,46,0.6)]">
+                        {timeLeft.seconds}
+                    </span>
+                    <span className="text-sm md:text-lg text-gray-400 font-medium">secs</span>
+                </div>
             </div>
         </div>
     );

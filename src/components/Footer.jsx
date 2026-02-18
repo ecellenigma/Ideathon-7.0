@@ -62,7 +62,7 @@ const Footer = () => {
       </div>
 
 
-      <div className="border-t border-gray-700 mx-auto max-w-7xl" /> {/* divider */}
+      <div className="border-t border-[#FF6A2E] mx-auto max-w-7xl" /> {/* divider */}
 
 
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-center space-x-6"> {/* social icons */}

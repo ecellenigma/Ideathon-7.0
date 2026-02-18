@@ -17,104 +17,62 @@ const Navbar = () => {
     };
 
     useEffect(() => {
-        const sections = document.querySelectorAll("section");
-        const options = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.6,
-        };
+        const handleScrollSpy = () => {
+            const sections = ["home", "about", "tracks", "faqs", "contact"];
+            const scrollPosition = window.scrollY + 100;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setActiveSection(entry.target.id);
+            // Check if we're at the bottom of the page
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+                setActiveSection("contact");
+                return;
+            }
+
+            for (const section of sections) {
+                const element = document.getElementById(section);
+                if (element && element.offsetTop <= scrollPosition && (element.offsetTop + element.offsetHeight) > scrollPosition) {
+                    setActiveSection(section);
                 }
-            });
-        }, options);
-
-        sections.forEach((section) => {
-            observer.observe(section);
-        });
-
-        return () => {
-            sections.forEach((section) => {
-                observer.unobserve(section);
-            });
+            }
         };
+
+        window.addEventListener("scroll", handleScrollSpy);
+        return () => window.removeEventListener("scroll", handleScrollSpy);
     }, []);
 
     return (
-        <nav className="bg-[#050201] text-white px-4 py-3 z-30 fixed w-full">
-            <div className="flex justify-between items-center">
-                <div className="flex items-center space-x-2">
-                    <img src={ideathonLogo} alt="Ideathon 7.0" className="h-10 w-auto" />
+        <nav className="bg-[#050201] md:bg-[#050201]/80 md:backdrop-blur-md border-b border-transparent md:border-[#FF6A2E]/20 text-white px-6 py-4 z-50 fixed w-full top-0 transition-all duration-300 shadow-md md:shadow-none">
+            <div className="flex justify-between items-center max-w-7xl mx-auto">
+                <div className="flex items-center space-x-2 cursor-pointer" onClick={() => handleScroll("home")}>
+                    <img src={ideathonLogo} alt="Ideathon 7.0" className="h-10 w-auto hover:scale-105 transition-transform duration-300" />
                 </div>
 
-                <ul className="hidden font-[Montserrat] md:flex space-x-10">
-                    <li>
-                        <a
-                            href="#home"
-                            onClick={() => handleScroll("home")}
-                            className={`hover:text-[#FF6A2E] transition-colors cursor-pointer ${activeSection === "home" ? "text-[#FF6A2E]" : ""
-                                }`}
-                        >
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#about"
-                            onClick={() => handleScroll("about")}
-                            className={`hover:text-[#FF6A2E] transition-colors cursor-pointer ${activeSection === "about" ? "text-[#FF6A2E]" : ""
-                                }`}
-                        >
-                            About
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#tracks"
-                            onClick={() => handleScroll("tracks")}
-                            className={`hover:text-[#FF6A2E] transition-colors cursor-pointer ${activeSection === "tracks" ? "text-[#FF6A2E]" : ""
-                                }`}
-                        >
-                            Tracks
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#faqs"
-                            onClick={() => handleScroll("faqs")}
-                            className={`hover:text-[#FF6A2E] transition-colors cursor-pointer ${activeSection === "faqs" ? "text-[#FF6A2E]" : ""
-                                }`}
-                        >
-                            FAQs
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="#contact"
-                            onClick={() => handleScroll("contact")}
-                            className={`hover:text-[#FF6A2E] transition-colors cursor-pointer ${activeSection === "contact" ? "text-[#FF6A2E]" : ""
-                                }`}
-                        >
-                            Contact
-                        </a>
-                    </li>
+                <ul className="hidden md:flex space-x-12 items-center">
+                    {["Home", "About", "Tracks", "FAQs", "Contact"].map((item) => (
+                        <li key={item}>
+                            <a
+                                href={`#${item.toLowerCase()}`}
+                                onClick={() => handleScroll(item.toLowerCase() === "faqs" ? "faqs" : item.toLowerCase())}
+                                className={`text-sm font-['Montserrat'] font-bold tracking-widest uppercase hover:text-[#FF6A2E] transition-colors relative group ${activeSection === (item.toLowerCase() === "faqs" ? "faqs" : item.toLowerCase()) ? "text-[#FF6A2E]" : "text-gray-300"}`}
+                            >
+                                {item}
+                                <span className={`absolute -bottom-2 left-0 w-0 h-[2px] bg-[#FF6A2E] transition-all duration-300 group-hover:w-full ${activeSection === (item.toLowerCase() === "faqs" ? "faqs" : item.toLowerCase()) ? "w-full" : ""}`}></span>
+                            </a>
+                        </li>
+                    ))}
                 </ul>
 
                 <div className="md:hidden">
-                    <button onClick={() => setIsOpen(true)}>
-                        <span className="text-lg mr-3">☰</span>
+                    <button onClick={() => setIsOpen(true)} className="text-[#FF6A2E] hover:text-white transition-colors">
+                        <span className="text-2xl">☰</span>
                     </button>
                 </div>
 
-                <div className="hidden md:flex items-center space-x-4">
+                <div className="hidden md:flex items-center space-x-6">
 
                     {/* <button onClick={() => window.open("https://certificates.ecellnmit.in/", "_blank")} className="bg-[#FF6A2E] text-[#030B15] px-4 py-2 md:mr-20 rounded hover:bg-[#FF8A06] transition-colors duration-300">
                         Certificate
                     </button> */}
-                    <button onClick={() => window.open("https://www.ecellnmit.in/", "_blank")}>
+                    <button onClick={() => window.open("https://www.ecellnmit.in/", "_blank")} className="hover:opacity-80 transition-opacity">
                         <img src={enigma} alt="Enigma" className="h-8 w-auto" />
                     </button>
                 </div>
@@ -122,40 +80,41 @@ const Navbar = () => {
 
             {isOpen && (
                 <motion.div
-                    initial={{ x: "-100%" }}
+                    initial={{ x: "100%" }}
                     animate={{ x: 0 }}
-                    exit={{ x: "-100%" }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className="fixed top-0 font-[Montserrat]  w-full h-full bg-[#050201] text-white flex flex-col items-start space-y-6 p-6 z-40 shadow-lg"
+                    exit={{ x: "100%" }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="fixed top-0 right-0 w-full h-full bg-[#050201]/95 backdrop-blur-md text-white flex flex-col items-center justify-center space-y-8 z-50 border-l border-[#FF6A2E]/20 shadow-2xl"
                 >
-                    <button onClick={() => setIsOpen(false)} className="text-2xl self-end">
+                    <button onClick={() => setIsOpen(false)} className="absolute top-6 right-6 text-4xl text-[#FF6A2E] hover:text-white transition-colors">
                         ✖
                     </button>
 
-                    <a href="#home" onClick={() => handleScroll("home")} className="hover:text-[#FF6A2E] cursor-pointer">
-                        Home
+                    <a href="#home" onClick={() => handleScroll("home")} className="text-2xl font-['Montserrat'] font-bold tracking-wider hover:text-[#FF6A2E] transition-colors cursor-pointer">
+                        HOME
                     </a>
-                    <a href="#about" onClick={() => handleScroll("about")} className="hover:text-[#FF6A2E] cursor-pointer">
-                        About
+                    <a href="#about" onClick={() => handleScroll("about")} className="text-2xl font-['Montserrat'] font-bold tracking-wider hover:text-[#FF6A2E] transition-colors cursor-pointer">
+                        ABOUT
                     </a>
-                    <a href="#tracks" onClick={() => handleScroll("tracks")} className="hover:text-[#FF6A2E] cursor-pointer">
-                        Tracks
+                    <a href="#tracks" onClick={() => handleScroll("tracks")} className="text-2xl font-['Montserrat'] font-bold tracking-wider hover:text-[#FF6A2E] transition-colors cursor-pointer">
+                        TRACKS
                     </a>
-                    <a href="#faqs" onClick={() => handleScroll("faqs")} className="hover:text-[#FF6A2E] cursor-pointer">
-                        Faqs
+                    <a href="#faqs" onClick={() => handleScroll("faqs")} className="text-2xl font-['Montserrat'] font-bold tracking-wider hover:text-[#FF6A2E] transition-colors cursor-pointer">
+                        FAQS
                     </a>
-                    <a href="#contact" onClick={() => handleScroll("contact")} className="hover:text-[#FF6A2E] cursor-pointer">
-                        Contact
+                    <a href="#contact" onClick={() => handleScroll("contact")} className="text-2xl font-['Montserrat'] font-bold tracking-wider hover:text-[#FF6A2E] transition-colors cursor-pointer">
+                        CONTACT
                     </a>
 
-                    <button onClick={() => window.open("https://certificates.ecellnmit.in/", "_blank")} className="bg-[#FF6A2E] font-sans text-[#030B15] px-4 py-2 rounded hover:bg-[#FF8A06] transition-colors duration-300">
-
-
+                    {/* <button onClick={() => window.open("https://certificates.ecellnmit.in/", "_blank")} className="bg-[#FF6A2E] font-sans text-[#030B15] px-6 py-3 rounded-lg hover:bg-[#FF8A06] transition-colors duration-300 font-bold text-lg">
                         Certificate
-                    </button>
-                    <button onClick={() => window.open("https://www.ecellnmit.in/", "_blank")}>
-                        <img src={enigma} alt="Enigma" className="h-8 w-auto" />
-                    </button>
+                    </button> */}
+
+                    <div className="absolute bottom-10">
+                        <button onClick={() => window.open("https://www.ecellnmit.in/", "_blank")} className="opacity-80 hover:opacity-100 transition-opacity">
+                            <img src={enigma} alt="Enigma" className="h-10 w-auto" />
+                        </button>
+                    </div>
                 </motion.div>
             )}
         </nav>

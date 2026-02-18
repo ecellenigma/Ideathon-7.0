@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import heroSvg from "../assets/ideathon7.0.svg";
 
@@ -10,7 +10,6 @@ import IdeathonCountdown from "@/components/CountDown";
 
 
 const Landing = () => {
-    const [showModal, setShowModal] = useState(false);
 
     return (
         <section id='home' className="text-white h-screen relative overflow-hidden snap-start">
@@ -30,10 +29,10 @@ const Landing = () => {
                         alt=""
                         initial={{ scale: 1, filter: "drop-shadow(0px 0px 0px rgba(255, 106, 46, 0))" }}
                         whileHover={{
-                            scale: 1.1,
-                            filter: "drop-shadow(0px 0px 25px rgba(255, 106, 46, 0.5))",
+                            scale: 1.05,
+                            filter: "drop-shadow(0px 0px 15px rgba(255, 106, 46, 0.4))",
                         }}
-                        transition={{ duration: 0.2, ease: "easeInOut" }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
                     />
                 </div>
 
@@ -43,7 +42,7 @@ const Landing = () => {
 
 
                 <motion.h1
-                    className="text-3xl md:text-5xl font-tektur font-bold mt-6 tracking-wider text-white drop-shadow-lg"
+                    className="text-4xl md:text-6xl font-tektur font-bold mt-10 md:mt-12 tracking-wider text-white drop-shadow-[0_5px_15px_rgba(255,106,46,0.4)]"
                     animate={{
                         opacity: [1, 1, 0.6, 1, 0.6, 1, 1]
                     }}
@@ -58,16 +57,12 @@ const Landing = () => {
                 </motion.h1>
 
 
-                <div className="flex flex-col md:flex-row gap-5 md:gap-8 items-center justify-center w-full px-4">
+                <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center justify-center w-full px-4 mt-12">
                     <motion.button
                         whileHover={{ scale: 1.05 }}
-                        onClick={(e) => {
-                            e.preventDefault();  // Prevent default action if any link behavior exists
-                            e.stopPropagation(); // Stop event bubbling
-                            setShowModal(true);
-                        }}
+                        onClick={() => window.open("https://unstop.com/competitions/ideathon-70-nitte-meenakshi-institute-of-technology-nmit-yelahanka-1642265", "_blank")}
                         whileTap={{ scale: 0.95 }}
-                        className="px-8 py-3 w-full md:w-auto rounded-xl cursor-pointer mt-5 md:mt-10 font-tektur font-bold text-lg text-white transition-all duration-300 bg-[#FF5100] hover:bg-[#FF3300] shadow-[0_4px_15px_rgba(255,81,0,0.4)] hover:shadow-[0_6px_20px_rgba(255,81,0,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none"
+                        className="px-8 py-3 w-full md:w-auto rounded-xl cursor-pointer font-tektur font-bold text-lg text-white transition-all duration-300 bg-[#FF5100] hover:bg-[#FF3300] shadow-[0_0_20px_rgba(255,81,0,0.5)] hover:shadow-[0_0_40px_rgba(255,81,0,0.7)] hover:-translate-y-1 active:translate-y-0 active:shadow-none"
                     >
                         Apply Now
                     </motion.button>
@@ -75,34 +70,17 @@ const Landing = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => window.open(brochure, '_blank')} // Opens PDF in new tab
-                        className="px-8 py-3 w-full md:w-auto rounded-xl cursor-pointer mt-0 md:mt-10 font-tektur font-bold text-lg text-white transition-all duration-300 bg-transparent border-2 border-[#FF5100] hover:bg-[#FF5100] hover:text-white shadow-[0_0_15px_rgba(255,81,0,0.2)] hover:shadow-[0_0_20px_rgba(255,81,0,0.5)] hover:-translate-y-1 active:translate-y-0"
+                        className="px-8 py-3 w-full md:w-auto rounded-xl cursor-pointer font-tektur font-bold text-lg text-white transition-all duration-300 bg-transparent border-2 border-[#FF5100] hover:bg-[#FF5100] hover:text-white shadow-[0_0_15px_rgba(255,81,0,0.2)] hover:shadow-[0_0_25px_rgba(255,81,0,0.5)] hover:-translate-y-1 active:translate-y-0"
                     >
                         View Brochure
                     </motion.button>
                 </div>
-                <IdeathonCountdown />
+                <div className="mt-8">
+                    <IdeathonCountdown />
+                </div>
             </motion.div>
 
-            {showModal && <Modal setShowModal={setShowModal} />}
         </section>
-    );
-};
-
-
-const Modal = ({ setShowModal }) => {
-    return (
-        <div className="fixed inset-0 md:p-0 p-3   bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-[100]">
-            <div className="bg-[#050201] md:p-6 p-10 p-x-3rounded-lg shadow-lg md:w-1/3 z-[100]">
-                <h2 className="text-xl text-[#FF6A2E] font-bold mb-4">Registration Closed</h2>
-                <p className="mb-4">   Registrations for the Ideathon are now closed. Thank you for your interest! We look forward to seeing you in our future events. Stay tuned!.</p>
-                <button
-                    className="bg-[#1d2227] text-white px-4 py-2 rounded"
-                    onClick={() => setShowModal(false)}
-                >
-                    Close
-                </button>
-            </div>
-        </div>
     );
 };
 
